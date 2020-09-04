@@ -1,0 +1,422 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Variables */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Styling */
+.nav {
+  background: #01a2a6;
+  text-align: center;
+  padding: 20px 10px;
+}
+.nav ul {
+  margin: 0;
+  padding: 0;
+}
+.nav ul li {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 5px;
+  margin-right: 15px;
+}
+.nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+.nav ul li a:hover {
+  text-decoration: underline;
+}
+.nav ul li:last-child {
+  margin-right: 0;
+}
+
+.container-small {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.btn-group {
+  margin: 0 0 30px;
+  text-align: center;
+}
+.btn-group button {
+  border: none !important;
+  background: #01a2a6;
+  padding: 15px;
+  color: white;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.btn-group button.btn-selected {
+  color: white;
+  background: #017173;
+}
+.btn-group button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.btn-group button:focus {
+  outline: none;
+}
+.btn-group button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.btn-group button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.btn-default {
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+.btn-default:hover {
+  cursor: pointer;
+}
+
+.questions-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.questions-list li {
+  padding: 15px;
+  background: #f2f2f2;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.questions-list li a {
+  text-decoration: none;
+}
+
+.main-content {
+  max-width: 1170px;
+  margin: 180px auto;
+}
+.main-content > .question-detail,
+.main-content > .tile-item {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 15px;
+  background: #f2f2f2;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.main-content > .question-detail {
+  max-width: 900px;
+}
+.main-content > .question-detail .tile-header,
+.main-content > .question-detail .tile-left {
+  text-align: center;
+}
+.main-content > .question-detail .would-you {
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+.main-content > .question-detail .question-body {
+  display: block;
+}
+.main-content > .question-detail .option-container {
+  display: table;
+  width: 100%;
+}
+.main-content > .question-detail .option-container > * {
+  display: table-cell;
+  width: 25%;
+}
+.main-content > .question-detail .option-container > *:last-child {
+  text-align: right;
+  width: 10%;
+}
+.main-content > .question-detail .option-container.selected {
+  border-radius: 4px;
+  border: 1px solid #01a2a6;
+  background: rgba(1, 162, 166, 0.05);
+}
+.main-content .title {
+  margin-top: 0;
+}
+.main-content .login-block {
+  text-align: center;
+  background: rgba(1, 162, 166, 0.05);
+  padding: 50px;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid #01a2a6;
+}
+
+.btn,
+input,
+select {
+  width: 300px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #01a2a6;
+  margin-bottom: 15px;
+}
+
+.btn {
+  color: white;
+  box-shadow: none;
+  border: none;
+  background: #01a2a6;
+  margin: 20px auto 0;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: #01898d;
+  cursor: pointer;
+}
+
+.user-info {
+  float: right;
+}
+.user-info .nav-user {
+  position: absolute;
+  right: 0;
+}
+.user-info .nav-user img {
+  background: white;
+  border: 2px solid #01a2a6;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.user-info h3,
+.user-info h4 {
+  margin: 10px auto;
+  color: #121212;
+}
+.user-info h3:hover,
+.user-info h4:hover {
+  cursor: default;
+}
+.user-info * {
+  color: #01a2a6;
+}
+
+.question-detail .question-body {
+  display: flex;
+  padding: 15px;
+}
+.question-detail .question-body > * {
+  padding: 15px;
+}
+.question-detail .question-body .option-box {
+  display: flex;
+}
+.question-detail .question-body .option-box > * {
+  padding: 15px;
+}
+
+.avatar {
+  border: 1px solid #01a2a6;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tile-item .tile-body {
+  display: flex;
+  align-items: center;
+}
+.tile-item .tile-body > * {
+  padding: 15px;
+}
+.tile-item .tile-body .question-body {
+  flex: 1;
+}
+.tile-item .tile-body .question-body .tile-header {
+  margin-top: 0;
+}
+.tile-item .tile-body .question-body .tile-header,
+.tile-item .tile-body .question-body .would-you,
+.tile-item .tile-body .question-body .question-text {
+  color: #211212;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.tile-item .tile-body .question-body .tile-header:hover,
+.tile-item .tile-body .question-body .would-you:hover,
+.tile-item .tile-body .question-body .question-text:hover {
+  pointer-events: none;
+}
+.tile-item .tile-body .question-body .would-you {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.tile-item .tile-body .question-body .option {
+  border: 1px solid transparent;
+  padding: 5px 5px 5px 10px;
+  border-radius: 4px;
+  margin: 0;
+}
+.tile-item .tile-body .question-body .option.option-selected {
+  border-color: #01a2a6;
+  background: rgba(1, 162, 166, 0.05);
+}
+.tile-item .tile-body .question-body .option.option-selected:after {
+  content: '\2713';
+  display: inline-block;
+  margin-left: 5px;
+  color: #01a2a6;
+  font-weight: bold;
+}
+.tile-item .tile-body .question-body .option:hover {
+  cursor: pointer;
+}
+.tile-item .tile-body .question-body .disabled,
+.tile-item .tile-body .question-body .btn-default {
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-top: 15px;
+}
+.tile-item.new-question {
+  text-align: center;
+  padding: 40px 15px;
+}
+.tile-item.new-question .tile-header {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+.tile-item.new-question .or,
+.tile-item.new-question .would-you {
+  margin-bottom: 10px;
+}
+.tile-item.new-question button {
+  width: 300px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #01a2a6;
+  margin-bottom: 15px;
+  color: white;
+  box-shadow: none;
+  border: none;
+  background: #01a2a6;
+  margin: 20px auto 0;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.tile-item.new-question button:hover {
+  background: #01898d;
+  cursor: pointer;
+}
+
+.users-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.users-list li {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 30px;
+  background: #f2f2f2;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #f2f2f2;
+}
+.users-list li .tile-section {
+  margin-bottom: 15px;
+}
+.users-list li .tile-section .user-name {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.users-list li .section-3 {
+  width: 110px;
+  height: 110px;
+  margin: 20px auto 0;
+  border-radius: 200px;
+  background: #01a2a6;
+  color: white;
+  padding: 30px 10px;
+}
+.users-list li .section-3 .total-score-count {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.users-list li .user-answered,
+.users-list li .user-created {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #01a2a6;
+  background: rgba(1, 162, 166, 0.05);
+}
+.users-list li .user-answered .value,
+.users-list li .user-created .value {
+  font-weight: bold;
+  margin-left: 10px;
+  color: #01a2a6;
+}
+.users-list li .user-answered {
+  border-radius: 4px 0 0 4px;
+}
+.users-list li .user-created {
+  border-radius: 0 4px 4px 0;
+}
+
+.table-view {
+  display: table;
+  width: 100%;
+}
+.table-view > * {
+  display: table-cell;
+  vertical-align: middle;
+}
