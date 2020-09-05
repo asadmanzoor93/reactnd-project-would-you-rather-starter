@@ -1,41 +1,32 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
-import Question from '../question/index';
+import AnsweredQuestions from './answeredQuestions';
+import UnansweredQuestions from './unansweredQuestions';
 
 const Dashboard = (props) => {
-  const { questions, authedUser } = props;
-  const [hidden, setHidden] = useState(false);
-
-  const filteredQuestions = Object.values(questions).filter((question) => {
-    const contains =
-      question.optionOne.votes.indexOf(authedUser) > -1 || question.optionTwo.votes.indexOf(authedUser) > -1;
-    return hidden ? contains : !contains;
-  });
-
-  const questionsListing = filteredQuestions
-    .sort((a, b) => b.timestamp - a.timestamp)
-    .map((question) => (
-      <li key={question.id}>
-        <Link to={`question/${question['id']}`}>
-          <Question id={question.id} />
-        </Link>
-      </li>
-    ));
+  const { authedUser, questions } = props;
+  const [showAnsweredTab, setShowAnsweredTab] = useState(false);
 
   return (
     <div className="container-small">
       <div className="btn-group">
-        <button className={!hidden ? 'btn-selected' : 'btn-default'} onClick={(e) => setHidden(false)}>
+        <button
+          className={!showAnsweredTab ? 'btn-selected' : 'btn-default'}
+          onClick={(e) => setShowAnsweredTab(false)}
+        >
           Unanswered Questions
         </button>
-        <button className={hidden ? 'btn-selected' : 'btn-default'} onClick={(e) => setHidden(true)}>
+        <button className={showAnsweredTab ? 'btn-selected' : 'btn-default'} onClick={(e) => setShowAnsweredTab(true)}>
           Answered Questions
         </button>
       </div>
 
-      <ul className="questions-list">{questionsListing}</ul>
+      {showAnsweredTab ? (
+        <AnsweredQuestions user={authedUser} questions={questions} />
+      ) : (
+        <UnansweredQuestions user={authedUser} questions={questions} />
+      )}
     </div>
   );
 };

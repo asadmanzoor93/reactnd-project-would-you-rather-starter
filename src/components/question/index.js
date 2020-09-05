@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Question = (props) => {
-  const { question, author } = props;
+  const { author, question } = props;
 
   return (
     <div className="tile-item">

@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 
 import { setAuthedUser, clearAuthedUser } from '../../actions/authedUser';
+import SelectDropdown from './selectDropdown';
 
 const Login = (props) => {
   const { dispatch, users } = props;
   const [userId, setUserId] = useState(null);
   const [toHome, setToHome] = useState(false);
+
   const { from } = props.location.state || { from: { pathname: '/dashboard' } };
+  const userSelected = userId ? userId : -1;
 
   useEffect(() => {
     dispatch(clearAuthedUser());
@@ -23,31 +26,17 @@ const Login = (props) => {
     setToHome(true);
   };
 
-  const usersLisitng = Object.keys(users).map(function(key) {
-    return (
-      <option value={users[key].id} key={key}>
-        {users[key].name}
-      </option>
-    );
-  });
-
   if (toHome) {
     return <Redirect to={from} />;
   }
 
   return (
-    <div className="login-block">
-      <h3 className="title">Welcome To Would You Rather App</h3>
-      <div className="user-select">
+    <div className="login-block login-div">
+      <h3 className="title app-title">Welcome To Would You Rather App</h3>
+      <div className="user-select select-dropdown">
         <p>Please sign in to continue</p>
-        <select id="login-select" value={userId ? userId : -1} onChange={handleInputChange}>
-          <option value="-1" disabled>
-            Select user...
-          </option>
-          {usersLisitng}
-        </select>
+        <SelectDropdown users={users} userSelected={userSelected} handleInputChange={handleInputChange} />
       </div>
-
       <button className="btn" disabled={userId === null} onClick={handleLogin}>
         Login
       </button>

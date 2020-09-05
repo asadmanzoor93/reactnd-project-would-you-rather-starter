@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Header = (props) => {
-  const { user, authedUser } = props;
+  const { authedUser, user } = props;
   const avatar = user ? user.avatarURL : 'placeholder.png';
   const name = user ? user.name : '';
 
