@@ -1,5 +1,5 @@
 import {
-  RECEIVE_QUESTIONS,
+  RECEIVE_QUESTIONS_SUCCESS,
   ANSWER_QUESTION_SUCCESS,
   ANSWER_QUESTION_FAILURE,
   ADD_QUESTION_SUCCESS,
@@ -8,7 +8,7 @@ import {
 
 export default function questions(state = {}, action) {
   switch (action.type) {
-    case RECEIVE_QUESTIONS:
+    case RECEIVE_QUESTIONS_SUCCESS:
       return {
         ...state,
         ...action.questions
@@ -31,14 +31,16 @@ export default function questions(state = {}, action) {
         error: action.payload
       };
     case ADD_QUESTION_SUCCESS:
+      const { id } = action;
       return {
         ...state,
-        [action.id]: action
+        [id]: action
       };
     case ADD_QUESTION_FAILURE:
+      const { payload } = action;
       return {
         ...state,
-        error: action.payload
+        error: payload
       };
     default:
       return state;

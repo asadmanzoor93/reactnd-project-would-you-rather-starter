@@ -1,7 +1,7 @@
 import { messageNotification } from '../helpers';
 import { saveQuestion, saveQuestionAnswer } from '../services/api';
 
-export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
+export const RECEIVE_QUESTIONS_SUCCESS = 'RECEIVE_QUESTIONS_SUCCESS';
 export const ADD_QUESTION_SUCCESS = 'ADD_QUESTION_SUCCESS';
 export const ADD_QUESTION_FAILURE = 'ADD_QUESTION_FAILURE';
 export const ANSWER_QUESTION_SUCCESS = 'ANSWER_QUESTION_SUCCESS';
@@ -35,9 +35,9 @@ function addQuestionFailure(error) {
   return { type: ANSWER_QUESTION_FAILURE, payload: error };
 }
 
-export const receiveQuestions = (questions) => {
+export const receiveQuestionsSuccess = (questions) => {
   return {
-    type: RECEIVE_QUESTIONS,
+    type: RECEIVE_QUESTIONS_SUCCESS,
     questions
   };
 };
