@@ -5,7 +5,7 @@ import QuestionsListItem from './questionListItem';
 const QuestionsListing = (props) => {
   const { questions } = props;
 
-  return questions.map((question) => <QuestionsListItem question={question} />);
+  return questions.map((question, index) => <QuestionsListItem key={index} question={question} />);
 };
 
 export default QuestionsListing;

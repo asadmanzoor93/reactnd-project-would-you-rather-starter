@@ -5,7 +5,7 @@ let users = {
     avatarURL: 'images/avatars/sarah.png',
     answers: {
       '8xf0y6ziyjabvozdd253nd': 'optionOne',
-      '6ni6ok3ym7mf1p33lnez': 'optionOne',
+      '6ni6ok3ym7mf1p33lnez': 'optionTwo',
       am8ehyc8byjqgar0jgpub9: 'optionTwo',
       loxhs1bqm25b708cmbf3g: 'optionTwo'
     },
@@ -58,7 +58,7 @@ let questions = {
     },
     optionTwo: {
       votes: ['johndoe', 'sarahedo'],
-      text: 'become a supervillian'
+      text: 'become a supervillain'
     }
   },
   am8ehyc8byjqgar0jgpub9: {
@@ -133,7 +133,6 @@ export function _getUsers() {
 }
 
 export function _getQuestions() {
-  //console.log('questions...', questions)
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...questions }), 1000);
   });
@@ -180,8 +179,6 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
-  //console.log("CRAPPPPP", authedUser, qid, answer)
-  //console.log('QUESTION', questions[qid],  questions[qid][answer])
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {

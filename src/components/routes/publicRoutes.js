@@ -8,7 +8,7 @@ import Page404 from '../404/Page404';
 import Dashboard from '../dashboard';
 import Leaderboard from '../leaderboard';
 import NewQuestion from '../question/newQuestion';
-import QuestionDetail from '../question/questionDetail';
+import QuestionPoll from '../question/questionPoll';
 
 const PublicRoutes = () => {
   return (
@@ -19,7 +19,7 @@ const PublicRoutes = () => {
           <Route path="/" exact component={Login} />
           <ProtectedRoute path="/dashboard" exact component={Dashboard} />
           <ProtectedRoute path="/add" exact component={NewQuestion} />
-          <ProtectedRoute path="/question/:id" component={QuestionDetail} />
+          <ProtectedRoute path="/question/:id" component={QuestionPoll} />
           <ProtectedRoute path="/leaderboard" component={Leaderboard} />
           <Route path="/404" component={Page404} />
         </Switch>
