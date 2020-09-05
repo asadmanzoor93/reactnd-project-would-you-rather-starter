@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 
 import Header from '../header';
 import Login from '../login';
@@ -13,6 +15,7 @@ import QuestionPoll from '../question/questionPoll';
 const PublicRoutes = () => {
   return (
     <Fragment>
+      <ReactNotification />
       <Header />
       <div className="main-content">
         <Switch>

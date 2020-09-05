@@ -8,7 +8,7 @@ const NewQuestion = (props) => {
   const { dispatch } = props;
   const [optionOneText, setOptionOneText] = useState('');
   const [optionTwoText, setOptionTwoText] = useState('');
-  const [toHome, setToHome] = useState(false);
+  const [redirectDashboard, setRedirectDashboard] = useState(false);
 
   const handleInputChange = (event, field) => {
     const value = event.target.value;
@@ -21,10 +21,10 @@ const NewQuestion = (props) => {
     dispatch(handleAddQuestion(optionOneText, optionTwoText));
     setOptionOneText('');
     setOptionTwoText('');
-    setToHome(true);
+    setRedirectDashboard(true);
   };
 
-  if (toHome) {
+  if (redirectDashboard) {
     return <Redirect to="/dashboard" />;
   }
 

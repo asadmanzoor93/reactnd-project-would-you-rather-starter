@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SelectDropdown = (props) => {
-  const { userId, users, handleInputChange, userSelected } = props;
+  const { users, handleInputChange, userSelected } = props;
 
   const options = Object.keys(users).map(function(username) {
     return (

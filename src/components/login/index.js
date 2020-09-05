@@ -8,8 +8,7 @@ import SelectDropdown from './selectDropdown';
 const Login = (props) => {
   const { dispatch, users } = props;
   const [userId, setUserId] = useState(null);
-  const [toHome, setToHome] = useState(false);
-
+  const [redirectHome, setRedirectHome] = useState(false);
   const { from } = props.location.state || { from: { pathname: '/dashboard' } };
   const userSelected = userId ? userId : -1;
 
@@ -23,10 +22,10 @@ const Login = (props) => {
 
   const handleLogin = () => {
     dispatch(setAuthedUser(userId));
-    setToHome(true);
+    setRedirectHome(true);
   };
 
-  if (toHome) {
+  if (redirectHome) {
     return <Redirect to={from} />;
   }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { handleAddAnswer } from '../../actions/questions';
+import { messageNotification } from '../../helpers';
 
 const AnswerPanel = (props) => {
   const { question_id, author, authedUser, question, dispatch } = props;
@@ -10,7 +11,7 @@ const AnswerPanel = (props) => {
     e.preventDefault();
 
     if (optionSelected === '') {
-      alert('Please choose the best option!');
+      messageNotification('danger', 'Answering Question', 'Please choose the best option!');
     } else {
       dispatch(
         handleAddAnswer({

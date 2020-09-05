@@ -1,5 +1,10 @@
-import { RECEIVE_QUESTIONS } from '../actions/questions';
-import { ANSWER_QUESTION, ADD_QUESTION } from '../actions/questions';
+import {
+  RECEIVE_QUESTIONS,
+  ANSWER_QUESTION_SUCCESS,
+  ANSWER_QUESTION_FAILURE,
+  ADD_QUESTION_SUCCESS,
+  ADD_QUESTION_FAILURE
+} from '../actions/questions';
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -8,21 +13,32 @@ export default function questions(state = {}, action) {
         ...state,
         ...action.questions
       };
-    case ANSWER_QUESTION:
+    case ANSWER_QUESTION_SUCCESS:
+      const { authedUser, qid, answer } = action;
       return {
         ...state,
-        [action.qid]: {
-          ...state[action.qid],
-          [action.answer]: {
-            ...state[action.qid][action.answer],
-            votes: state[action.qid][action.answer].votes.concat([action.authedUser])
+        [qid]: {
+          ...state[qid],
+          [answer]: {
+            ...state[qid][answer],
+            votes: state[qid][answer].votes.concat([authedUser])
           }
         }
       };
-    case ADD_QUESTION:
+    case ANSWER_QUESTION_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+    case ADD_QUESTION_SUCCESS:
       return {
         ...state,
         [action.id]: action
+      };
+    case ADD_QUESTION_FAILURE:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;

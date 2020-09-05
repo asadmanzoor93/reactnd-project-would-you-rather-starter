@@ -1,19 +1,28 @@
+import { messageNotification } from '../helpers';
 import { saveQuestion, saveQuestionAnswer } from '../services/api';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
-export const ADD_QUESTION = 'ADD_QUESTION';
-export const ANSWER_QUESTION = 'ANSWER_QUESTION';
+export const ADD_QUESTION_SUCCESS = 'ADD_QUESTION_SUCCESS';
+export const ADD_QUESTION_FAILURE = 'ADD_QUESTION_FAILURE';
+export const ANSWER_QUESTION_SUCCESS = 'ANSWER_QUESTION_SUCCESS';
+export const ANSWER_QUESTION_FAILURE = 'ANSWER_QUESTION_FAILURE';
 
-export function receiveQuestions(questions) {
+function addAnswerSuccess({ authedUser, qid, answer }) {
   return {
-    type: RECEIVE_QUESTIONS,
-    questions
+    type: ANSWER_QUESTION_SUCCESS,
+    authedUser,
+    qid,
+    answer
   };
 }
 
-function addQuestion({ id, timestamp, author, optionOne, optionTwo }) {
+function addAnswerFailure(error) {
+  return { type: ADD_QUESTION_FAILURE, payload: error };
+}
+
+function addQuestionSuccess({ id, timestamp, author, optionOne, optionTwo }) {
   return {
-    type: ADD_QUESTION,
+    type: ADD_QUESTION_SUCCESS,
     id,
     timestamp,
     author,
@@ -22,54 +31,51 @@ function addQuestion({ id, timestamp, author, optionOne, optionTwo }) {
   };
 }
 
-export function handleAddQuestion(optionOneText, optionTwoText) {
+function addQuestionFailure(error) {
+  return { type: ANSWER_QUESTION_FAILURE, payload: error };
+}
+
+export const receiveQuestions = (questions) => {
+  return {
+    type: RECEIVE_QUESTIONS,
+    questions
+  };
+};
+
+export const handleAddQuestion = (optionOneText, optionTwoText) => {
   return (dispatch, getState) => {
     const { authedUser } = getState();
-
-    const questionInfo = {
+    const info = {
       optionOneText,
       optionTwoText,
       author: authedUser
     };
-
-    //dispatching this here and not after api success cause of frequent error in creating question
-    //dispatch(addQuestion(formatNewQuestion(questionInfo)))
-
-    return saveQuestion(questionInfo)
+    return saveQuestion(info)
       .then((question) => {
-        // eslint-disable-next-line no-console
-        console.log('created QUESTION', question);
-        dispatch(addQuestion(question));
+        dispatch(addQuestionSuccess(question));
+        messageNotification('success', 'New Question Addition', 'New Question Added Successfully');
       })
       .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log('There was a problem saving question.');
-        alert('There was a problem creating new question. Try again ');
+        dispatch(addQuestionFailure(error));
+        messageNotification(
+          'danger',
+          'There was a problem saving question. Please try again',
+          error.response.data.error
+        );
       });
   };
-}
+};
 
-function addAnswer({ authedUser, qid, answer }) {
-  return {
-    type: ANSWER_QUESTION,
-    authedUser,
-    qid,
-    answer
-  };
-}
-
-export function handleAddAnswer(info) {
+export const handleAddAnswer = (info) => {
   return (dispatch) => {
-    //assuming answer gets updated correctly
-    dispatch(addAnswer(info));
-    return (
-      saveQuestionAnswer(info)
-        // eslint-disable-next-line no-console
-        .then(() => console.log('recorded answer'))
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.log('There was a problem saving question.');
-        })
-    );
+    dispatch(addAnswerSuccess(info));
+    return saveQuestionAnswer(info)
+      .then(() => {
+        messageNotification('success', 'Question Answer', 'Question Answered Successfully');
+      })
+      .catch((error) => {
+        dispatch(addAnswerFailure(error));
+        messageNotification('danger', 'There was a problem saving answer', error.response.data.error);
+      });
   };
-}
+};
