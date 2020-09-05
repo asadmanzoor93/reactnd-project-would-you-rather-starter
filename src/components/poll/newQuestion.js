@@ -30,7 +30,7 @@ const NewQuestion = (props) => {
 
   return (
     <div className="tile-item new-question">
-      <h3 className="tile-header">Create New Question</h3>
+      <h3 className="tile-header">Create New Poll Question</h3>
       <form onSubmit={handleSubmit}>
         <div className="would-you">Would you rather...</div>
         <input

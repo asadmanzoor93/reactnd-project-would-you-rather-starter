@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Question from '../question/index';
+import Question from '../poll/question';
 
 const QuestionsListItem = (props) => {
   const { question } = props;

@@ -18,7 +18,7 @@ const Header = (props) => {
           </li>
           <li>
             <NavLink to="/add" exact activeClassName="active">
-              New Question
+              New Poll
             </NavLink>
           </li>
           <li>

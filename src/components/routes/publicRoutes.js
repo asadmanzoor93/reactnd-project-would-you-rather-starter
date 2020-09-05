@@ -9,8 +9,8 @@ import ProtectedRoute from '../routes/protectedRoute';
 import Page404 from '../404/Page404';
 import Dashboard from '../dashboard';
 import Leaderboard from '../leaderboard';
-import NewQuestion from '../question/newQuestion';
-import QuestionPoll from '../question/questionPoll';
+import NewQuestion from '../poll/newQuestion';
+import QuestionPoll from '../poll/questionPoll';
 
 const PublicRoutes = () => {
   return (
