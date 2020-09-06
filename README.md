@@ -9,7 +9,29 @@ To get started developing right away:
 - install all project dependencies with `npm install`
 - start the development server with `npm start`
 
-## Backend
+## Screens
+
+### Login
+
+![1](https://user-images.githubusercontent.com/17013371/92320446-0d97a480-f03b-11ea-9831-3736b4cbbad7.png)
+
+### Dashboard
+
+![2](https://user-images.githubusercontent.com/17013371/92320447-112b2b80-f03b-11ea-8908-7bd97fd43358.png)
+
+### Leaderboard
+
+![3](https://user-images.githubusercontent.com/17013371/92320448-14261c00-f03b-11ea-80ee-60a4a63e3a35.png)
+
+### Question Poll
+
+![4](https://user-images.githubusercontent.com/17013371/92320453-1a1bfd00-f03b-11ea-972f-6a47b3a943be.png)
+
+### Poll Results
+
+![5](https://user-images.githubusercontent.com/17013371/92320456-1be5c080-f03b-11ea-8c7e-57894b0fedd9.png)
+
+## Backend Development Support
 
 The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the `_DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
 

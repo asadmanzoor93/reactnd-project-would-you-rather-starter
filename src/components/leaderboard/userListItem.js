@@ -7,7 +7,7 @@ const UserListItem = (props) => {
     <li key={user.id}>
       <div className="tile-item">
         <div className="tile-section section-1">
-          <img alt="avatar" className="avatar" src={`/${user.avatarURL}`} />
+          <img alt="avatar" className="avatar" src={`${user.avatarURL}`} />
         </div>
         <div className="tile-section section-2">
           <div className="user-name">{user.name}</div>

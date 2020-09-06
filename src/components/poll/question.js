@@ -8,7 +8,7 @@ const Question = (props) => {
     <div className="tile-item">
       <div className="tile-body">
         <div className="tile-left">
-          <img alt="avatar" className="avatar" src={`/${author.avatarURL}`} />
+          <img alt="avatar" className="avatar" src={`${author.avatarURL}`} />
         </div>
 
         <div className="question-body">
